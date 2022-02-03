@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userName"
+            type="String" />
+
+        <variable
+            name="challenge"
+            type="com.example.challengeup.dto.ChallengeDTO" />
+
+        <variable
+            name="userAvatar"
+            type="String" />
+
+        <variable
+            name="challengeThumbnail"
+            type="String" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".fragment.ChallengeFragment">
+
+            <ImageView
+                android:id="@+id/imageChallenge"
+                centerCropImageUrl="@{challengeThumbnail}"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:maxHeight="260dp"
+                bind:layout_constraintHeight_max="wrap"
+                bind:layout_constraintTop_toTopOf="parent"
+                bind:layout_constraintWidth_max="wrap"
+                tools:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/dataCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxWidth="300dp"
+                android:text="@{challenge.name}"
+                android:textAlignment="center"
+                android:textSize="@dimen/h2"
+                bind:layout_constraintEnd_toStartOf="@+id/iconSave"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/imageChallenge"
+                tools:text="The greatest ever" />
+
+            <ImageView
+                android:id="@+id/iconSave"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/ic_bookmark"
+                bind:layout_constraintBottom_toBottomOf="@+id/dataCompleted"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toTopOf="@+id/dataCompleted" />
+
+            <ImageView
+                android:id="@+id/avatar"
+                roundImageUrl="@{userAvatar}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/dataCompleted"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/nameUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{userName}"
+                android:textColor="@color/nicknameColor"
+                android:textSize="@dimen/h4"
+                bind:layout_constraintBottom_toBottomOf="@+id/avatar"
+                bind:layout_constraintStart_toEndOf="@+id/avatar"
+                bind:layout_constraintTop_toTopOf="@+id/avatar"
+                tools:text="Iron Tony" />
+
+            <Button
+                android:id="@+id/btnFollow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text="@string/follow"
+                android:textSize="@dimen/h6"
+                bind:layout_constraintBottom_toBottomOf="@+id/avatar"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toTopOf="@+id/avatar" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                bind:chipSpacing="8dp"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/avatar">
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/titleDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/description"
+                android:textSize="@dimen/h3"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/categories" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@{challenge.description}"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/h6"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/titleDescription"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis suscipit lectus non est elementum congue. Sed at imperdiet quam. Pellentesque ullamcorper dolor nec sem euismod, nec feugiat ex ultricies. Proin ut efficitur ligula. Sed feugiat, metus a sagittis porttitor, ante metus vestibulum mi, sit amet faucibus nibh sapien eget mi. Vestibulum porta est vel volutpat aliquet. Nulla eleifend sem at feugiat porttitor. Mauris vel ligula at leo imperdiet viverra. Fusce nec euismod justo. Etiam cursus purus sed orci maximus eleifend. Sed sodales diam erat, id laoreet ante sollicitudin ut. Nunc congue neque vitae fringilla elementum. In feugiat, lacus non facilisis viverra, diam tortor sodales dui, at dignissim ipsum sem ut tortor. " />
+
+            <ImageView
+                android:id="@+id/rewardAchievement"
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_trophy"
+                bind:layout_constraintEnd_toStartOf="@+id/rewardRP"
+                bind:layout_constraintHorizontal_bias="0.5"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/description" />
+
+            <TextView
+                android:id="@+id/rewardRP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:text="@{challenge.rp}"
+                android:textSize="@dimen/h4"
+                bind:layout_constraintBottom_toBottomOf="@+id/rewardAchievement"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintHorizontal_bias="0.5"
+                bind:layout_constraintStart_toEndOf="@+id/rewardAchievement"
+                bind:layout_constraintTop_toTopOf="@+id/rewardAchievement"
+                tools:text="100 RP" />
+
+            <include
+                android:id="@+id/statsAccepted"
+                layout="@layout/item_stats"
+                android:layout_width="110dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="16dp"
+                bind:layout_constraintEnd_toStartOf="@+id/statsCompleted"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/rewardAchievement"
+                bind:statsData="@{challenge.accepted}"
+                bind:statsDescription='@{"Accepted"}'
+                bind:statsIcon='@{@drawable/ic_users}' />
+
+            <include
+                android:id="@+id/statsCompleted"
+                layout="@layout/item_stats"
+                android:layout_width="110dp"
+                android:layout_height="140dp"
+                bind:layout_constraintEnd_toStartOf="@+id/statsLiked"
+                bind:layout_constraintStart_toEndOf="@+id/statsAccepted"
+                bind:layout_constraintTop_toTopOf="@+id/statsAccepted"
+                bind:statsData="@{challenge.completed}"
+                bind:statsDescription='@{"Completed"}'
+                bind:statsIcon='@{@drawable/ic_checkmark}' />
+
+            <include
+                android:id="@+id/statsLiked"
+                layout="@layout/item_stats"
+                android:layout_width="110dp"
+                android:layout_height="140dp"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toEndOf="@+id/statsCompleted"
+                bind:layout_constraintTop_toTopOf="@+id/statsCompleted"
+                bind:statsData="@{challenge.liked}"
+                bind:statsDescription='@{"Liked"}'
+                bind:statsIcon='@{@drawable/ic_heart_border}' />
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/challenge_me"
+                android:textSize="@dimen/h5"
+                android:visibility="invisible"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/btnBan" />
+
+            <Button
+                android:id="@+id/btnLoadVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/upload_video_confirmation"
+                android:textSize="@dimen/h5"
+                android:visibility="invisible"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/btnBan" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                bind:layout_constraintBottom_toTopOf="@+id/viewPager"
+                bind:layout_constraintTop_toBottomOf="@+id/btnAccept" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:maxHeight="500dp"
+                bind:layout_constraintTop_toBottomOf="@id/tab_layout"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <ImageView
+                android:id="@+id/iconDislike"
+                android:layout_width="48dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                bind:layout_constraintBottom_toBottomOf="@+id/reportedNum"
+                bind:layout_constraintEnd_toStartOf="@+id/reportedNum"
+                bind:layout_constraintTop_toTopOf="@+id/reportedNum"
+                bind:srcCompat="@drawable/ic_dislike_black" />
+
+            <TextView
+                android:id="@+id/reportedNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="@dimen/h4"
+                android:text="@{challenge.reportCount}"
+                android:visibility="gone"
+                bind:layout_constraintBottom_toBottomOf="@+id/btnBan"
+                bind:layout_constraintEnd_toStartOf="@+id/btnBan"
+                bind:layout_constraintHorizontal_bias="0.5"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="@+id/btnBan"
+                tools:text="5" />
+
+            <Button
+                android:id="@+id/btnBan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/ban_challenge"
+                android:visibility="gone"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintHorizontal_bias="0.5"
+                bind:layout_constraintStart_toEndOf="@+id/reportedNum"
+                bind:layout_constraintTop_toBottomOf="@+id/statsCompleted" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
