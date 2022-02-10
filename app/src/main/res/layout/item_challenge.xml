@@ -150,25 +150,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{challenge.liked}"
-                    app:layout_constraintEnd_toStartOf="@id/buttonSave"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/dataCompleted"
                     app:layout_constraintTop_toTopOf="@+id/dataCompleted"
                     tools:text="1M" />
-
-                <ToggleButton
-                    android:id="@+id/buttonSave"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/button_saved"
-                    android:checked="false"
-                    android:text=""
-                    android:textOff=""
-                    android:textOn=""
-                    app:layout_constraintBottom_toBottomOf="@+id/button_liked"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/button_liked" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
